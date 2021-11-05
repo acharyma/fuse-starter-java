@@ -33,20 +33,4 @@ public interface IexClient {
    */
   @GetMapping("/tops/last")
   List<IexLastTradedPrice> getLastTradedPriceForSymbols(@RequestParam("symbols") String[] symbols);
-
-  /**
-   * Get the last historical prices for the stock symbol passed in. See https://iexcloud.io/docs/api/#historical-prices.
-   *
-   * @param symbol stock symbol to get historical prices for.
-   * @param range the range to get historical prices for
-   * @param date the date to get historical prices for
-   * @param token the token to pass
-   * @return a list of the historical prices for each of the symbols passed in.
-   */
-  @GetMapping("/stock/{symbol}/chart/{range}/{date}")
-  List<IexHistoricalPrices> getHistoricalPricesForSymbol(
-      @PathVariable("symbol") String symbol,
-      @PathVariable("range") String range,
-      @PathVariable("date") String date,
-      String token);
 }

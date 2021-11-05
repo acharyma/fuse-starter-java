@@ -21,6 +21,7 @@ public class IexService {
 
   @NonNull
   private IexClient iexClient;
+  private IexClientHistoricalPrices iexClientHistoricalPrices;
   private  static final String API_TOKEN = "pk_8387e341de644c2294e98adbae2725a2";
 
   /**
@@ -58,7 +59,7 @@ public class IexService {
       final String symbol,
       final String range,
       final String date) {
-    return iexClient.getHistoricalPricesForSymbol(symbol, range, date, API_TOKEN);
+    return iexClientHistoricalPrices.getHistoricalPricesForSymbol(symbol, range, date, API_TOKEN);
   }
 
 
