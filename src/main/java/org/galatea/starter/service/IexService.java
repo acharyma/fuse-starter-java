@@ -1,10 +1,14 @@
 package org.galatea.starter.service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.spi.LocaleServiceProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
@@ -27,7 +31,24 @@ public class IexService {
   private IexClientHistoricalPrices iexClientHistoricalPrices;
 
   private List<IexHistoricalPrices> returnedHistoricalPrices;
-  private static final String API_TOKEN = "pk_8387e341de644c2294e98adbae2725a2";
+
+  private String apiKey = "";
+
+  File apiFile = new File("api-key.txt");
+  Scanner myReader;
+
+  {
+    try {
+      myReader = new Scanner(apiFile);
+      apiKey = myReader.nextLine();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+  }
+
+
+
+
 
   /**
    * Get all stock symbols from IEX.
@@ -71,20 +92,20 @@ public class IexService {
       if (date == null) {
         //handle filling in symbol -- for each
         returnedHistoricalPrices = iexClientHistoricalPrices
-            .getHistoricalPricesForSymbol(symbol, "1m", "", API_TOKEN);
+            .getHistoricalPricesForSymbol(symbol, "1m", "", apiKey);
         returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
         return returnedHistoricalPrices;
       }
     } else if (date == null) {
       //handle filling in symbol -- for each
       returnedHistoricalPrices = iexClientHistoricalPrices
-          .getHistoricalPricesForSymbol(symbol, range, "", API_TOKEN);
+          .getHistoricalPricesForSymbol(symbol, range, "", apiKey);
       returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
       return returnedHistoricalPrices;
     }
     //handle filling in symbol -- for each
     returnedHistoricalPrices = iexClientHistoricalPrices
-        .getHistoricalPricesForSymbol(symbol, range, date, API_TOKEN);
+        .getHistoricalPricesForSymbol(symbol, range, date, apiKey);
     returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
     return returnedHistoricalPrices;
   }
