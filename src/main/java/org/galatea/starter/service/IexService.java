@@ -86,6 +86,8 @@ public class IexService {
       final String range,
       final String date) {
 
+    //TODO:- Handle if symbol isn't inputted!
+
     //handle empty parameters -- make range and date optional -- repeating myself here! Final vars
 
     if (range == null) {
