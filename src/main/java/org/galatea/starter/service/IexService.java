@@ -2,6 +2,7 @@ package org.galatea.starter.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.spi.LocaleServiceProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +22,12 @@ public class IexService {
 
   @NonNull
   private IexClient iexClient;
+
+  @NonNull
   private IexClientHistoricalPrices iexClientHistoricalPrices;
-  private  static final String API_TOKEN = "pk_8387e341de644c2294e98adbae2725a2";
+
+  private List<IexHistoricalPrices> returnedHistoricalPrices;
+  private static final String API_TOKEN = "pk_8387e341de644c2294e98adbae2725a2";
 
   /**
    * Get all stock symbols from IEX.
@@ -59,7 +64,29 @@ public class IexService {
       final String symbol,
       final String range,
       final String date) {
-    return iexClientHistoricalPrices.getHistoricalPricesForSymbol(symbol, range, date, API_TOKEN);
+
+    //handle empty parameters -- make range and date optional -- repeating myself here! Final vars
+
+    if (range == null) {
+      if (date == null) {
+        //handle filling in symbol -- for each
+        returnedHistoricalPrices = iexClientHistoricalPrices
+            .getHistoricalPricesForSymbol(symbol, "1m", "", API_TOKEN);
+        returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
+        return returnedHistoricalPrices;
+      }
+    } else if (date == null) {
+      //handle filling in symbol -- for each
+      returnedHistoricalPrices = iexClientHistoricalPrices
+          .getHistoricalPricesForSymbol(symbol, range, "", API_TOKEN);
+      returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
+      return returnedHistoricalPrices;
+    }
+    //handle filling in symbol -- for each
+    returnedHistoricalPrices = iexClientHistoricalPrices
+        .getHistoricalPricesForSymbol(symbol, range, date, API_TOKEN);
+    returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
+    return returnedHistoricalPrices;
   }
 
 

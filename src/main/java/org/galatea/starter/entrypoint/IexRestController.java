@@ -28,6 +28,7 @@ public class IexRestController {
   private IexService iexService;
 
 
+
   /**
    * Exposes an endpoint to get all of the symbols available on IEX.
    *
@@ -62,9 +63,10 @@ public class IexRestController {
   @GetMapping(value = "${mvc.iex.getHistoricalPricesPath}", produces = {
       MediaType.APPLICATION_JSON_VALUE})
   public List<IexHistoricalPrices> getHistoricalPrices(
-      @PathVariable("symbol") final String symbol,
-      @PathVariable("range") final String range,
-      @PathVariable("date") final String date) {
+      @RequestParam(value = "symbol") final String symbol,
+      @RequestParam(value = "range", required = false) final String range,
+      @RequestParam(value = "date", required = false) final String date) {
+
     return iexService.getHistoricalPricesForSymbol(symbol, range, date);
   }
 

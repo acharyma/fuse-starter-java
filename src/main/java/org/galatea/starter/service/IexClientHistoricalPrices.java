@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * A Feign Declarative REST Client to access endpoints from the Free and Open IEX API to get market
  * data. See https://iextrading.com/developer/docs/
  */
-@FeignClient(name = "IEXHISTORICALPRICES", url = "${spring.rest.iexBasePathHistoricalPrices}")
+@FeignClient(name = "IEX", url = "${spring.rest.iexBasePathHistoricalPrices}")
 public interface IexClientHistoricalPrices {
   /**
    * Get the last historical prices for the stock symbol passed in. See https://iexcloud.io/docs/api/#historical-prices.
@@ -26,8 +26,8 @@ public interface IexClientHistoricalPrices {
    */
   @GetMapping("/stock/{symbol}/chart/{range}/{date}")
   List<IexHistoricalPrices> getHistoricalPricesForSymbol(
-      @PathVariable("symbol") String symbol,
-      @PathVariable("range") String range,
-      @PathVariable("date") String date,
-      String token);
+      @PathVariable(value = "symbol") String symbol,
+      @PathVariable(value = "range") String range,
+      @PathVariable(value = "date") String date,
+      @RequestParam(value = "token") String token);
 }
