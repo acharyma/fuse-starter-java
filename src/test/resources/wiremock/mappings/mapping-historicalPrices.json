@@ -1,69 +1,27 @@
 {
-  "id" : "notrealdata",
-  "name" : "historical_prices",
-  "request" : {
-    "url" : "/historicalPrices?symbol=FB&range=1m",
-    "method" : "GET"
+  "id": "02dd114d-c883-41e5-9a44-3f1b7acf21bd",
+  "name": "historical_prices",
+  "request": {
+    "url": "/stock/FB/chart/1d/?token=pk_8387e341de644c2294e98adbae2725a2",
+    "method": "GET"
   },
-  "response" : {
-    "status" : 200,
-    "jsonBody" : [
-      {
-        "symbol":"FB",
-        "close": 330.05,
-        "high": 333.4,
-        "low": 328.71,
-        "open": 331.51,
-        "volume": 15946110,
-        "date": "2020-10-08"
-      },
-      {
-        "symbol":"FB",
-        "close": 323.77,
-        "high": 330.52,
-        "low": 327.1,
-        "open": 328.355,
-        "volume": 21585018,
-        "date": "2021-10-14"
-      },
-      {
-        "symbol":"FB",
-        "close": 341.13,
-        "high": 346.79,
-        "low": 339.64,
-        "open": 340.31,
-        "volume": 26872817,
-        "date": "2021-11-05"
-      },
-      {
-        "symbol":"FB",
-        "close": 343.74,
-        "high": 347.13,
-        "low": 338.47,
-        "open": 349.36,
-        "volume": 22473221,
-        "date": "2021-06-06"
-      }
-    ],
-    "headers" : {
-      "Server" : "nginx",
-      "Date" : "Thu, 08 Aug 2019 14:08:53 GMT",
-      "Content-Type" : "application/json; charset=utf-8",
-      "Connection" : "keep-alive",
-      "set-cookie" : "ctoken=958c0e17a3f542a2a13ef676b670326d; Domain=.iextrading.com; Path=/; Expires=Fri, 09 Aug 2019 02:08:53 GMT; Secure",
-      "Content-Security-Policy" : "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
-      "X-Content-Security-Policy" : "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
-      "Frame-Options" : "SAMEORIGIN",
-      "X-Frame-Options" : "SAMEORIGIN",
-      "X-Content-Type-Options" : "nosniff",
-      "Strict-Transport-Security" : "max-age=15768000",
-      "Access-Control-Allow-Origin" : "*",
-      "Access-Control-Allow-Credentials" : "true",
-      "Access-Control-Allow-Methods" : "GET, OPTIONS",
-      "Access-Control-Allow-Headers" : "Origin, X-Requested-With, Content-Type, Accept"
+  "response": {
+    "status": 200,
+    "body": "[{\"date\":\"2021-11-09\",\"minute\":\"09:30\",\"label\":\"09:30 AM\",\"high\":340.81,\"low\":339.76,\"open\":339.82,\"close\":340.415,\"average\":340.104,\"volume\":5249,\"notional\":1785205.055,\"numberOfTrades\":78},{\"date\":\"2021-11-09\",\"minute\":\"09:31\",\"label\":\"09:31 AM\",\"high\":340.315,\"low\":339.12,\"open\":340.315,\"close\":339.42,\"average\":339.887,\"volume\":28310,\"notional\":9622207.535,\"numberOfTrades\":56},{\"date\":\"2021-11-09\",\"minute\":\"09:32\",\"label\":\"09:32 AM\",\"high\":341.165,\"low\":339.595,\"open\":339.84,\"close\":340.76,\"average\":340.78,\"volume\":2089,\"notional\":711889.09,\"numberOfTrades\":39},{\"date\":\"2021-11-09\",\"minute\":\"09:33\",\"label\":\"09:33 AM\",\"high\":340.55,\"low\":339.95,\"open\":340.55,\"close\":340.07,\"average\":340.216,\"volume\":3053,\"notional\":1038680.935,\"numberOfTrades\":59},{\"date\":\"2021-11-09\",\"minute\":\"09:34\",\"label\":\"09:34 AM\",\"high\":340.41,\"low\":339.92,\"open\":340.105,\"close\":340.14,\"average\":340.155,\"volume\":1970,\"notional\":670105.925,\"numberOfTrades\":51},{\"date\":\"2021-11-09\",\"minute\":\"09:35\",\"label\":\"09:35 AM\",\"high\":341.135,\"low\":340.04,\"open\":340.175,\"close\":341.04,\"average\":340.659,\"volume\":5515,\"notional\":1878737.035,\"numberOfTrades\":84},{\"date\":\"2021-11-09\",\"minute\":\"09:36\",\"label\":\"09:36 AM\",\"high\":341.26,\"low\":340.715,\"open\":340.92,\"close\":340.825,\"average\":340.886,\"volume\":4858,\"notional\":1656024.795,\"numberOfTrades\":78},{\"date\":\"2021-11-09\",\"minute\":\"09:37\",\"label\":\"09:37 AM\",\"high\":341.045,\"low\":339.95,\"open\":340.91,\"close\":339.955,\"average\":340.422,\"volume\":3695,\"notional\":1257860.395,\"numberOfTrades\":91},{\"date\":\"2021-11-09\",\"minute\":\"09:38\",\"label\":\"09:38 AM\",\"high\":340.645,\"low\":340.055,\"open\":340.36,\"close\":340.065,\"average\":340.412,\"volume\":3204,\"notional\":1090679.805,\"numberOfTrades\":62},{\"date\":\"2021-11-09\",\"minute\":\"09:39\",\"label\":\"09:39 AM\",\"high\":340.63,\"low\":340.06,\"open\":340.445,\"close\":340.115,\"average\":340.43,\"volume\":2415,\"notional\":822139.625,\"numberOfTrades\":45},{\"date\":\"2021-11-09\",\"minute\":\"09:40\",\"label\":\"09:40 AM\",\"high\":340.16,\"low\":339.76,\"open\":340.08,\"close\":339.945,\"average\":339.932,\"volume\":1156,\"notional\":392961.05,\"numberOfTrades\":36},{\"date\":\"2021-11-09\",\"minute\":\"09:41\",\"label\":\"09:41 AM\",\"high\":340.37,\"low\":339.945,\"open\":339.945,\"close\":340.125,\"average\":340.183,\"volume\":1992,\"notional\":677645.455,\"numberOfTrades\":42},{\"date\":\"2021-11-09\",\"minute\":\"09:42\",\"label\":\"09:42 AM\",\"high\":340.555,\"low\":340.19,\"open\":340.265,\"close\":340.38,\"average\":340.355,\"volume\":1723,\"notional\":586432.03,\"numberOfTrades\":32},{\"date\":\"2021-11-09\",\"minute\":\"09:43\",\"label\":\"09:43 AM\",\"high\":340.66,\"low\":340.21,\"open\":340.585,\"close\":340.21,\"average\":340.466,\"volume\":2180,\"notional\":742215.69,\"numberOfTrades\":42},{\"date\":\"2021-11-09\",\"minute\":\"09:44\",\"label\":\"09:44 AM\",\"high\":340.575,\"low\":340.31,\"open\":340.575,\"close\":340.47,\"average\":340.462,\"volume\":2500,\"notional\":851156.185,\"numberOfTrades\":35},{\"date\":\"2021-11-09\",\"minute\":\"09:45\",\"label\":\"09:45 AM\",\"high\":340.5,\"low\":340.14,\"open\":340.5,\"close\":340.145,\"average\":340.3,\"volume\":2858,\"notional\":972577.405,\"numberOfTrades\":57},{\"date\":\"2021-11-09\",\"minute\":\"09:46\",\"label\":\"09:46 AM\",\"high\":340.215,\"low\":339.92,\"open\":340.12,\"close\":340.045,\"average\":339.979,\"volume\":692,\"notional\":235265.62,\"numberOfTrades\":28},{\"date\":\"2021-11-09\",\"minute\":\"09:47\",\"label\":\"09:47 AM\",\"high\":340.14,\"low\":339.755,\"open\":340.005,\"close\":339.76,\"average\":339.979,\"volume\":2830,\"notional\":962142.23,\"numberOfTrades\":65},{\"date\":\"2021-11-09\",\"minute\":\"09:48\",\"label\":\"09:48 AM\",\"high\":339.74,\"low\":339.03,\"open\":339.74,\"close\":339.04,\"average\":339.522,\"volume\":5252,\"notional\":1783170.495,\"numberOfTrades\":43},{\"date\":\"2021-11-09\",\"minute\":\"09:49\",\"label\":\"09:49 AM\",\"high\":338.99,\"low\":338.24,\"open\":338.99,\"close\":338.28,\"average\":338.395,\"volume\":2462,\"notional\":833128.65,\"numberOfTrades\":48},{\"date\":\"2021-11-09\",\"minute\":\"09:50\",\"label\":\"09:50 AM\",\"high\":338.72,\"low\":338.22,\"open\":338.325,\"close\":338.335,\"average\":338.399,\"volume\":3415,\"notional\":1155633.435,\"numberOfTrades\":57},{\"date\":\"2021-11-09\",\"minute\":\"09:51\",\"label\":\"09:51 AM\",\"high\":338.855,\"low\":338.26,\"open\":338.31,\"close\":338.75,\"average\":338.458,\"volume\":2336,\"notional\":790638.47,\"numberOfTrades\":47},{\"date\":\"2021-11-09\",\"minute\":\"09:52\",\"label\":\"09:52 AM\",\"high\":338.705,\"low\":338.475,\"open\":338.675,\"close\":338.5,\"average\":338.573,\"volume\":1697,\"notional\":574558.605,\"numberOfTrades\":45},{\"date\":\"2021-11-09\",\"minute\":\"09:53\",\"label\":\"09:53 AM\",\"high\":338.615,\"low\":337.94,\"open\":338.54,\"close\":337.99,\"average\":338.344,\"volume\":2436,\"notional\":824206.095,\"numberOfTrades\":64},{\"date\":\"2021-11-09\",\"minute\":\"09:54\",\"label\":\"09:54 AM\",\"high\":338.05,\"low\":337.71,\"open\":337.88,\"close\":337.95,\"average\":337.832,\"volume\":2631,\"notional\":888837.46,\"numberOfTrades\":53},{\"date\":\"2021-11-09\",\"minute\":\"09:55\",\"label\":\"09:55 AM\",\"high\":338.16,\"low\":337.63,\"open\":337.85,\"close\":337.645,\"average\":337.869,\"volume\":1884,\"notional\":636545.185,\"numberOfTrades\":63},{\"date\":\"2021-11-09\",\"minute\":\"09:56\",\"label\":\"09:56 AM\",\"high\":337.59,\"low\":337.04,\"open\":337.54,\"close\":337.04,\"average\":337.319,\"volume\":2636,\"notional\":889173.785,\"numberOfTrades\":74},{\"date\":\"2021-11-09\",\"minute\":\"09:57\",\"label\":\"09:57 AM\",\"high\":337.74,\"low\":336.87,\"open\":337.045,\"close\":337.49,\"average\":337.295,\"volume\":2568,\"notional\":866174.575,\"numberOfTrades\":78},{\"date\":\"2021-11-09\",\"minute\":\"09:58\",\"label\":\"09:58 AM\",\"high\":337.43,\"low\":336.8,\"open\":337.425,\"close\":337.015,\"average\":337.104,\"volume\":3322,\"notional\":1119860.175,\"numberOfTrades\":75},{\"date\":\"2021-11-09\",\"minute\":\"09:59\",\"label\":\"09:59 AM\",\"high\":337.67,\"low\":336.91,\"open\":336.91,\"close\":337.67,\"average\":337.215,\"volume\":3980,\"notional\":1342114.97,\"numberOfTrades\":89},{\"date\":\"2021-11-09\",\"minute\":\"10:00\",\"label\":\"10 AM\",\"high\":337.81,\"low\":337.21,\"open\":337.81,\"close\":337.24,\"average\":337.359,\"volume\":1539,\"notional\":519195.58,\"numberOfTrades\":62},{\"date\":\"2021-11-09\",\"minute\":\"10:01\",\"label\":\"10:01 AM\",\"high\":337.41,\"low\":337,\"open\":337.25,\"close\":337.26,\"average\":337.194,\"volume\":3134,\"notional\":1056765.185,\"numberOfTrades\":73},{\"date\":\"2021-11-09\",\"minute\":\"10:02\",\"label\":\"10:02 AM\",\"high\":337.43,\"low\":336.84,\"open\":337.43,\"close\":336.84,\"average\":337.09,\"volume\":1888,\"notional\":636426.74,\"numberOfTrades\":46},{\"date\":\"2021-11-09\",\"minute\":\"10:03\",\"label\":\"10:03 AM\",\"high\":336.81,\"low\":335.87,\"open\":336.79,\"close\":336.09,\"average\":336.225,\"volume\":2174,\"notional\":730952.34,\"numberOfTrades\":64},{\"date\":\"2021-11-09\",\"minute\":\"10:04\",\"label\":\"10:04 AM\",\"high\":336.62,\"low\":336.08,\"open\":336.09,\"close\":336.19,\"average\":336.252,\"volume\":2361,\"notional\":793890.67,\"numberOfTrades\":57},{\"date\":\"2021-11-09\",\"minute\":\"10:05\",\"label\":\"10:05 AM\",\"high\":336.37,\"low\":334.9,\"open\":336.245,\"close\":334.9,\"average\":335.7,\"volume\":6815,\"notional\":2287795.325,\"numberOfTrades\":52},{\"date\":\"2021-11-09\",\"minute\":\"10:06\",\"label\":\"10:06 AM\",\"high\":335.535,\"low\":334.69,\"open\":334.8,\"close\":335.28,\"average\":335.15,\"volume\":3866,\"notional\":1295689.21,\"numberOfTrades\":82},{\"date\":\"2021-11-09\",\"minute\":\"10:07\",\"label\":\"10:07 AM\",\"high\":335.4,\"low\":335.035,\"open\":335.24,\"close\":335.06,\"average\":335.218,\"volume\":1315,\"notional\":440811.46,\"numberOfTrades\":40},{\"date\":\"2021-11-09\",\"minute\":\"10:08\",\"label\":\"10:08 AM\",\"high\":335.16,\"low\":334.61,\"open\":334.955,\"close\":335.07,\"average\":334.894,\"volume\":1518,\"notional\":508369.925,\"numberOfTrades\":40},{\"date\":\"2021-11-09\",\"minute\":\"10:09\",\"label\":\"10:09 AM\",\"high\":335.85,\"low\":334.98,\"open\":335,\"close\":335.81,\"average\":335.261,\"volume\":3791,\"notional\":1270974.64,\"numberOfTrades\":76},{\"date\":\"2021-11-09\",\"minute\":\"10:10\",\"label\":\"10:10 AM\",\"high\":336.01,\"low\":335.61,\"open\":335.77,\"close\":335.61,\"average\":335.74,\"volume\":1910,\"notional\":641263.345,\"numberOfTrades\":61},{\"date\":\"2021-11-09\",\"minute\":\"10:11\",\"label\":\"10:11 AM\",\"high\":335.865,\"low\":335.55,\"open\":335.615,\"close\":335.775,\"average\":335.734,\"volume\":2207,\"notional\":740964.21,\"numberOfTrades\":51},{\"date\":\"2021-11-09\",\"minute\":\"10:12\",\"label\":\"10:12 AM\",\"high\":336.46,\"low\":335.88,\"open\":335.915,\"close\":336.425,\"average\":336.236,\"volume\":2303,\"notional\":774350.445,\"numberOfTrades\":64},{\"date\":\"2021-11-09\",\"minute\":\"10:13\",\"label\":\"10:13 AM\",\"high\":336.39,\"low\":336.12,\"open\":336.38,\"close\":336.12,\"average\":336.212,\"volume\":1449,\"notional\":487170.88,\"numberOfTrades\":35},{\"date\":\"2021-11-09\",\"minute\":\"10:14\",\"label\":\"10:14 AM\",\"high\":336.27,\"low\":335.79,\"open\":336.12,\"close\":336.035,\"average\":336.065,\"volume\":1042,\"notional\":350179.635,\"numberOfTrades\":37},{\"date\":\"2021-11-09\",\"minute\":\"10:15\",\"label\":\"10:15 AM\",\"high\":336.39,\"low\":335.595,\"open\":335.99,\"close\":336.15,\"average\":335.896,\"volume\":2006,\"notional\":673806.925,\"numberOfTrades\":48},{\"date\":\"2021-11-09\",\"minute\":\"10:16\",\"label\":\"10:16 AM\",\"high\":336.58,\"low\":335.995,\"open\":336.27,\"close\":336.43,\"average\":336.241,\"volume\":2819,\"notional\":947863.65,\"numberOfTrades\":74},{\"date\":\"2021-11-09\",\"minute\":\"10:17\",\"label\":\"10:17 AM\",\"high\":336.735,\"low\":336.285,\"open\":336.4,\"close\":336.34,\"average\":336.533,\"volume\":1331,\"notional\":447925.495,\"numberOfTrades\":42},{\"date\":\"2021-11-09\",\"minute\":\"10:18\",\"label\":\"10:18 AM\",\"high\":336.39,\"low\":336.06,\"open\":336.26,\"close\":336.255,\"average\":336.221,\"volume\":2030,\"notional\":682528.935,\"numberOfTrades\":46},{\"date\":\"2021-11-09\",\"minute\":\"10:19\",\"label\":\"10:19 AM\",\"high\":336.25,\"low\":336.06,\"open\":336.21,\"close\":336.225,\"average\":336.132,\"volume\":965,\"notional\":324367.94,\"numberOfTrades\":44},{\"date\":\"2021-11-09\",\"minute\":\"10:20\",\"label\":\"10:20 AM\",\"high\":336.42,\"low\":336.2,\"open\":336.24,\"close\":336.23,\"average\":336.295,\"volume\":1167,\"notional\":392456.1,\"numberOfTrades\":39},{\"date\":\"2021-11-09\",\"minute\":\"10:21\",\"label\":\"10:21 AM\",\"high\":336.335,\"low\":336.1,\"open\":336.19,\"close\":336.21,\"average\":336.226,\"volume\":2528,\"notional\":849980.615,\"numberOfTrades\":49}]",
+    "headers": {
+      "Server": "nginx",
+      "Date": "Tue, 09 Nov 2021 15:22:59 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Set-Cookie": "ctoken=d4e9c747a9e0408b9bcd7418577c2303; Max-Age=43200; Path=/; Expires=Wed, 10 Nov 2021 03:22:59 GMT",
+      "iexcloud-messages-used": "1",
+      "iexcloud-credits-used": "1",
+      "iexcloud-premium-messages-used": "0",
+      "iexcloud-premium-credits-used": "0",
+      "X-Content-Type-Options": "nosniff",
+      "Strict-Transport-Security": "max-age=15768000"
     }
   },
-  "uuid" : "16369e06-78d4-40a7-98d1-3dbe0ba82fc9",
-  "persistent" : true,
-  "insertionIndex" : 5
+  "uuid": "02dd114d-c883-41e5-9a44-3f1b7acf21bd",
+  "persistent": true,
+  "insertionIndex": 5
 }
