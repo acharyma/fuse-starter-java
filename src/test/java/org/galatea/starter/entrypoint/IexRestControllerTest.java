@@ -90,6 +90,10 @@ public class IexRestControllerTest extends ASpringTest {
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$[0].high").value(new BigDecimal("340.81")))
+        .andExpect(jsonPath("$[1].low").value(new BigDecimal("339.12")))
+        .andExpect(jsonPath("$[2].open").value(new BigDecimal("339.84")))
+        .andExpect(jsonPath("$[3].close").value(new BigDecimal("340.07")))
+        .andExpect(jsonPath("$[5].volume").value(new BigDecimal(5515)))
         .andReturn();
   }
 }
