@@ -96,4 +96,15 @@ public class IexRestControllerTest extends ASpringTest {
         .andExpect(jsonPath("$[5].volume").value(new BigDecimal(5515)))
         .andReturn();
   }
+
+  @Test
+  public void testHistoricalPricesNoSymbol() throws Exception{
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", is(Collections.emptyList())))
+        .andReturn();
+  }
 }

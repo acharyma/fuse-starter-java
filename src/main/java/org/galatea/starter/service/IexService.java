@@ -85,6 +85,9 @@ public class IexService {
       final String symbol,
       final String range,
       final String date) {
+    if (symbol.compareTo("") == 0) {
+      return Collections.emptyList();
+    }
 
     //handle empty parameters -- make range and date optional -- repeating myself here! Final vars
 
