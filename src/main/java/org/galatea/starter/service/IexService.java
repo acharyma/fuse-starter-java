@@ -97,8 +97,13 @@ public class IexService {
         returnedHistoricalPrices = iexClientHistoricalPrices
             .getHistoricalPricesForSymbol(symbol, "1m", "", apiKey);
         returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
-        return returnedHistoricalPrices;
+      } else {
+        //handle filling in symbol -- for each
+        returnedHistoricalPrices = iexClientHistoricalPrices
+            .getHistoricalPricesForSymbol(symbol, "1m", date, apiKey);
+        returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
       }
+      return returnedHistoricalPrices;
     } else if (date == null) {
       //handle filling in symbol -- for each
       returnedHistoricalPrices = iexClientHistoricalPrices

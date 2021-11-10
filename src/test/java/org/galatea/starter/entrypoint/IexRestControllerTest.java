@@ -98,7 +98,7 @@ public class IexRestControllerTest extends ASpringTest {
   }
 
   @Test
-  public void testHistoricalPricesNoSymbol() throws Exception{
+  public void testHistoricalPricesNoSymbol() throws Exception {
     MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
             .get("/iex/historicalPrices?symbol=")
