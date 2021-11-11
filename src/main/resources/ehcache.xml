@@ -7,6 +7,7 @@
 
   <diskStore path="java.io.tmpdir" />
 
+
   <!-- Default Cache Configuration, with name 'default' -->
   <defaultCache maxElementsInMemory="4096"
     timeToLiveSeconds="1200" overflowToDisk="false"
