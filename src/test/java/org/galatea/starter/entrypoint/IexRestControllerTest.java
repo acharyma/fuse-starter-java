@@ -85,15 +85,45 @@ public class IexRestControllerTest extends ASpringTest {
   @Test
   public void testHistoricalPrices() throws  Exception {
     MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=FB&range=1m&date=20200409")
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andExpect(jsonPath("$[1].low").value(new BigDecimal("174.365")))
+        .andExpect(jsonPath("$[2].open").value(new BigDecimal("174.8")))
+        .andExpect(jsonPath("$[3].close").value(new BigDecimal("174.55")))
+        .andExpect(jsonPath("$[5].volume").value(new BigDecimal(1155)))
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesNoDate() throws  Exception {
+    MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-            .get("/iex/historicalPrices?symbol=FB&range=1d")
+            .get("/iex/historicalPrices?symbol=FB&range=1m")
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].high").value(new BigDecimal("340.81")))
-        .andExpect(jsonPath("$[1].low").value(new BigDecimal("339.12")))
-        .andExpect(jsonPath("$[2].open").value(new BigDecimal("339.84")))
-        .andExpect(jsonPath("$[3].close").value(new BigDecimal("340.07")))
-        .andExpect(jsonPath("$[5].volume").value(new BigDecimal(5515)))
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andExpect(jsonPath("$[1].low").value(new BigDecimal("174.365")))
+        .andExpect(jsonPath("$[2].open").value(new BigDecimal("174.8")))
+        .andExpect(jsonPath("$[3].close").value(new BigDecimal("174.55")))
+        .andExpect(jsonPath("$[5].volume").value(new BigDecimal(1155)))
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesNoRange() throws  Exception {
+    MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=FB&date=20200409")
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andExpect(jsonPath("$[1].low").value(new BigDecimal("174.365")))
+        .andExpect(jsonPath("$[2].open").value(new BigDecimal("174.8")))
+        .andExpect(jsonPath("$[3].close").value(new BigDecimal("174.55")))
+        .andExpect(jsonPath("$[5].volume").value(new BigDecimal(1155)))
         .andReturn();
   }
 
@@ -103,8 +133,7 @@ public class IexRestControllerTest extends ASpringTest {
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
             .get("/iex/historicalPrices?symbol=")
             .accept(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$", is(Collections.emptyList())))
+        .andExpect(status().isNotFound())
         .andReturn();
   }
 }

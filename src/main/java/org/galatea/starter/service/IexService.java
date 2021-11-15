@@ -8,15 +8,17 @@ import java.util.Scanner;
 import java.util.spi.LocaleServiceProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.aspect4log.Log;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  * A layer for transformation, aggregation, and business required when retrieving data from IEX.
@@ -32,21 +34,8 @@ public class IexService {
   @NonNull
   private IexClientHistoricalPrices iexClientHistoricalPrices;
 
-  private List<IexHistoricalPrices> returnedHistoricalPrices;
-
-  private String apiKey = "";
-
-  File apiFile = new File("api-key.txt");
-  Scanner myReader;
-
-  {
-    try {
-      myReader = new Scanner(apiFile);
-      apiKey = myReader.nextLine();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-  }
+  @Value("${apiKey}")
+  private String apiKey;
 
 
 
@@ -90,37 +79,12 @@ public class IexService {
       final String date) {
     log.info("Did not hit the cache");
     if (symbol.compareTo("") == 0) {
-      return Collections.emptyList();
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND, "entity not found"
+      );
     }
 
-    //handle empty parameters -- make range and date optional -- repeating myself here! Final vars
-
-    if (range == null) {
-      if (date == null) {
-        //handle filling in symbol -- for each
-        returnedHistoricalPrices = iexClientHistoricalPrices
-            .getHistoricalPricesForSymbol(symbol, "1m", "", apiKey);
-        returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
-      } else {
-        //handle filling in symbol -- for each
-        returnedHistoricalPrices = iexClientHistoricalPrices
-            .getHistoricalPricesForSymbol(symbol, "1m", date, apiKey);
-        returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
-      }
-      return returnedHistoricalPrices;
-    } else if (date == null) {
-      //handle filling in symbol -- for each
-      returnedHistoricalPrices = iexClientHistoricalPrices
-          .getHistoricalPricesForSymbol(symbol, range, "", apiKey);
-      returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
-      return returnedHistoricalPrices;
-    }
-    //handle filling in symbol -- for each
-    returnedHistoricalPrices = iexClientHistoricalPrices
+    return iexClientHistoricalPrices
         .getHistoricalPricesForSymbol(symbol, range, date, apiKey);
-    returnedHistoricalPrices.forEach(s -> s.setSymbol(symbol));
-    return returnedHistoricalPrices;
   }
-
-
 }
