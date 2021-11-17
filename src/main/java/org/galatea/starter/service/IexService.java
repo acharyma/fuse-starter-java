@@ -74,11 +74,6 @@ public class IexService {
       final String symbol,
       final String range,
       final String date) {
-    if (symbol.compareTo("") == 0) {
-      throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND, "entity not found"
-      );
-    }
 
     return iexClientHistoricalPrices
         .getHistoricalPricesForSymbol(symbol, range, date, apiKey);

@@ -136,4 +136,87 @@ public class IexRestControllerTest extends ASpringTest {
         .andExpect(status().isNotFound())
         .andReturn();
   }
+
+  @Test
+  public void testHistoricalPricesRangeAndDate() throws Exception {
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=&range=1m&date=20200409")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isNotFound())
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesDateandSymbol() throws Exception {
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=FB&range=&date=20200409")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesSymbolOnly() throws Exception {
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=FB&range=&date=")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesRangeOnly() throws Exception {
+    MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=&range=1m&date=")
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesInvalidRange() throws Exception {
+    MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=FB&range=1000lodsfj&date=")
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isBadRequest())
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesInvalidDate() throws Exception {
+    MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=FB&range=1m&date=11111111111111")
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isBadRequest())
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesBadSymbol() throws Exception {
+    MvcResult result = this.mvc.perform(
+            org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                .get("/iex/historicalPrices?symbol=LOKOKLKOK&range=1m&date=")
+                .accept(MediaType.APPLICATION_PROBLEM_JSON))
+        .andExpect(status().isNotAcceptable())
+        .andReturn();
+  }
+
+  @Test
+  public void testHistoricalPricesServerNotAvailable() throws  Exception {
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().is5xxServerError())
+        .andReturn();
+  }
 }
