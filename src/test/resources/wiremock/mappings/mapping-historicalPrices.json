@@ -2,7 +2,7 @@
   "id" : "5b14effc-8d0c-405d-bb05-bd750edc719b",
   "name" : "stock_fb_chart_1m_20200409",
   "request" : {
-    "url" : "/stock/FB/chart/1m/20200409?token=pk_8387e341de644c2294e98adbae2725a2",
+    "url" : "/stock/FB/chart/1m/20200409?token=",
     "method" : "GET"
   },
   "response" : {
