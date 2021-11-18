@@ -175,8 +175,7 @@ public class IexRestControllerTest extends ASpringTest {
             org.springframework.test.web.servlet.request.MockMvcRequestBuilders
                 .get("/iex/historicalPrices?symbol=&range=1m&date=")
                 .accept(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].high").value(new BigDecimal("175.71")))
+        .andExpect(status().isNotFound())
         .andReturn();
   }
 
