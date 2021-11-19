@@ -149,6 +149,8 @@ Configuration:
         level: debug
         AppenderRef:
           - ref: AsyncRestRequestAppender
+      - name: org.springframework.cache
+        level: trace
 
       # Turn off Spring auto-configuration debug-level logging because it adds a lot of noise to startup logs
       # If Spring debug logging is off this isn't necessary
