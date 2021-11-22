@@ -9,10 +9,14 @@ import java.util.spi.LocaleServiceProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.aspect4log.Log;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
+import org.galatea.starter.domain.rpsy.HistoricalPricesRpsy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -31,6 +35,9 @@ public class IexService {
 
   @NonNull
   private IexClientHistoricalPrices iexClientHistoricalPrices;
+
+  @NonNull
+  HistoricalPricesRpsy historicalrpsy;
 
   @Value("${apiKey}")
   private String apiKey;
@@ -70,10 +77,12 @@ public class IexService {
    * @param date the date to get historical prices for
    * @return a list of historical prices for the Symbol that is passed in.
    */
+  @Cacheable(cacheNames = "historicalp", sync = true)
   public List<IexHistoricalPrices> getHistoricalPricesForSymbol(
       final String symbol,
       final String range,
       final String date) {
+    log.info("Did not hit the cache");
 
     return iexClientHistoricalPrices
         .getHistoricalPricesForSymbol(symbol, range, date, apiKey);
