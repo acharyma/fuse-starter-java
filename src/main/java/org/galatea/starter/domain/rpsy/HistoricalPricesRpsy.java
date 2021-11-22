@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.springframework.data.repository.CrudRepository;
 
-public interface HistoricalPricesRpsy extends CrudRepository<IexHistoricalPrices, Long> {
+public interface HistoricalPricesRpsy extends CrudRepository<IexHistoricalPrices, String> {
   /**
    * Retrieves all entities with the given symbol.
    */
