@@ -13,6 +13,8 @@ import net.sf.aspect4log.Log;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
+import org.galatea.starter.domain.rpsy.HistoricalPricesRpsy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -33,6 +35,9 @@ public class IexService {
 
   @NonNull
   private IexClientHistoricalPrices iexClientHistoricalPrices;
+
+  @NonNull
+  HistoricalPricesRpsy historicalrpsy;
 
   @Value("${apiKey}")
   private String apiKey;
@@ -78,11 +83,6 @@ public class IexService {
       final String range,
       final String date) {
     log.info("Did not hit the cache");
-    if (symbol.compareTo("") == 0) {
-      throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND, "entity not found"
-      );
-    }
 
     return iexClientHistoricalPrices
         .getHistoricalPricesForSymbol(symbol, range, date, apiKey);
